@@ -3,11 +3,32 @@ import {Drone} from '../classes/drone.js';
 import {DataError} from './data-error.js';
 
 export class FleetDataService {
-      constructor(){
+      constructor(dataFleet){
             this.cars = [];
             this.drones = [];
             this.errors = [];
+            if(dataFleet!=null)
+                  this.loadData(dataFleet);
       }
+
+      filterCarsByMake(filter){
+            return this.cars.filter(car => car.make.indexOf(filter) >= 0);
+      }
+
+      getCarsSortedByLicense(){
+            return this.cars.sort(function(car1, car2){
+                  if(car1.license<car2.license) return -1;
+                  else if (car1.license>car2.license) return 1;
+                  else return 0;
+            });
+      }
+
+      getCarByLicense(license){
+            return this.cars.find(function(car){
+                  return car.license === license;
+            });
+      }
+
       loadData(fleet){
             for (let data of fleet) {
                   switch (data.type) {

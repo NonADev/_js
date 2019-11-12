@@ -1,9 +1,21 @@
-import {Car} from './classes/car.js';
-import {Drone} from './classes/drone.js';
+import {jQuery} from 'jquery';
 import {fleet} from './fleet-data.js';
 import {FleetDataService} from './services/fleet-data-services.js';
+import {ApplicationBase} from './framework/application-base.js';
 
-let dataService = new FleetDataService();
-dataService.loadData(fleet);
+export class App extends ApplicationBase{
 
-console.log(dataService);
+      constructor(){
+            super('Fleet Manager');
+            this.dataService = new FleetDataService(fleet);
+
+                        this.addRoute('Home', null, true);
+                        this.addRoute('Cars', null, true);
+                        this.addRoute('Drones', null, true);
+                        this.addRoute('Map', null, true);
+      }
+
+}
+
+export let application = new App();
+application.show($('body'));

@@ -2,13 +2,17 @@
 <html lang="en" dir="ltr">
         <head>
                 <title>Drones</title>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+                <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
                 <script src="node_modules/traceur/bin/traceur.js"></script>
                 <script src="node_modules/es6-module-loader/dist/es6-module-loader-dev.js"></script>
+                <script src="/node_modules/material-design-lite/material.min.js"></script>
                 <meta charset="utf-8">
                 <title></title>
         </head>
         <body>
                 <script>
+                        System.paths['jquery'] = './node_modules/jquery/dist/jquery.js';
                         System.import('src/app.js');
                 </script>
         </body>
